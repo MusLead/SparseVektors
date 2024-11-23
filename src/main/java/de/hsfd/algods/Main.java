@@ -5,14 +5,10 @@ import java.util.Arrays;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         // implement SparseVektor
         try {
-        SparseVektor v = new SparseVektor();
-//        for (int i = 0; i < 10; i++) {
-//            // setElement randomly
-//            v.setElement(i, (int) (Math.random() * 10));
-//        }
+            SparseVektor v = new SparseVektor();
 
             v.setElement(700, 1);
             v.setElement(31, 223);
@@ -20,6 +16,7 @@ public class Main {
             v.setElement(1, 4);
             v.setElement(4, 37);
             System.out.println("Vector v: " + v);
+
             SparseVektor v2 = new SparseVektor();
             v2.setElement(7, 1);
             v2.setElement(3, 223);
@@ -32,6 +29,7 @@ public class Main {
             System.out.println("Vector v: " + v);
 
             v.removeElement(4);
+
             System.out.println("Vector v: " + v);
             System.out.println("element at index 7: " + v.getElement(7));
             System.out.println("isEmpty: " + v.isEmpty());
