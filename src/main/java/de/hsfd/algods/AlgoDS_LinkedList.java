@@ -72,7 +72,7 @@ public class AlgoDS_LinkedList implements AlgoDS_List {
     /**
      * Get the current element (that is the element after the current pointer)
      * If the current pointer is at the end of the list, throw an exception.<p>
-     * WARNING: With this function, you can get the current element and update the element
+     * WARNING: With this function, you can get the current element and update the element,
      * but you can not update the current pointer!
      * @return the current element
      */
