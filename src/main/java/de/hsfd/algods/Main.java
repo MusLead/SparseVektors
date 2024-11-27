@@ -5,8 +5,10 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         try {
+            
             SparseVector v = new SparseVector();
-
+            SparseVector v1 = new SparseVector(10);
+            
             v.setElement(700, 1);
             v.setElement(31, 223);
             v.setElement(70, 342);

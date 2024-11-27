@@ -39,6 +39,7 @@ class LinkedList {
 
     LinkedList() {
         this.begin = this.current_pointer = new Node(null, -1);
+        this.current_pointer.setNext(null);
     }
 
      /**
@@ -150,7 +151,7 @@ class LinkedList {
         while(!isEnd() && curr_index() != pos){
             advance();
         }
-        if(isEnd()) throw new RuntimeException("Invalid position");
+        if(isEnd()) throw new RuntimeException("No elements to be removed");
         delete();
     }
 
@@ -167,7 +168,7 @@ class LinkedList {
 
 public class SparseVector extends LinkedList {
     
-    private int length = -1;
+    private int sizeMax = -1;
     private int count = 0;
 
     SparseVector() {
@@ -176,7 +177,8 @@ public class SparseVector extends LinkedList {
 
     SparseVector(int size) {
         super();
-        this.length = size;
+        if (size < 1) throw new RuntimeException("Invalid size");
+        this.sizeMax = size;
     }
 
     /**
@@ -188,12 +190,13 @@ public class SparseVector extends LinkedList {
      */
     public void setElement(int index, double value) throws RuntimeException {
         //TODO create test if the count == length, will it add element or throw exception!
-        if(length != -1)
-            if(count++ >= length) throw new RuntimeException("Vector is full");
+        if(sizeMax != -1)
+            if(count++ >= sizeMax) throw new RuntimeException("Vector is full");
         if (index < 0) throw new RuntimeException("Invalid position");
         reset();
         while (!isEnd() && curr_index() < index)
             advance();
+        //TODO: create if statement to check if the value is not 0, then add the element
         this.insert(value, index);
     }
 
@@ -217,7 +220,7 @@ public class SparseVector extends LinkedList {
      * @param index the index of the element to remove
      */
     public void removeElement(int index) {
-        if(length != -1)
+        if(sizeMax != -1)
             if(count-- <= 0) throw new RuntimeException("Vector is empty");
         this.delete(index);
     }
@@ -228,7 +231,7 @@ public class SparseVector extends LinkedList {
      * @return the length of this vector
      */
     public int getLength() {
-        if (this.length != -1) return count;
+        if (this.sizeMax != -1) return count;
         this.reset();
         int totalElements = 0;
         while (!this.isEnd()) {
