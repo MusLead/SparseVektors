@@ -2,13 +2,10 @@ package de.hsfd.algods;
 
 import java.util.Arrays;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        // implement SparseVektor
         try {
-            SparseVektor v = new SparseVektor();
+            SparseVector v = new SparseVector();
 
             v.setElement(700, 1);
             v.setElement(31, 223);
@@ -17,7 +14,7 @@ public class Main {
             v.setElement(4, 37);
             System.out.println("Vector v: " + v);
 
-            SparseVektor v2 = new SparseVektor();
+            SparseVector v2 = new SparseVector();
             v2.setElement(7, 1);
             v2.setElement(3, 223);
             v2.setElement(5, 342);
@@ -32,7 +29,6 @@ public class Main {
 
             System.out.println("Vector v: " + v);
             System.out.println("element at index 7: " + v.getElement(7));
-            System.out.println("isEmpty: " + v.isEmpty());
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
