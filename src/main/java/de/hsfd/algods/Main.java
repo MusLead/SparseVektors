@@ -7,7 +7,7 @@ public class Main {
         try {
             
             SparseVector v = new SparseVector();
-            
+
             v.setElement(700, 1);
             v.setElement(31, 223);
             v.setElement(70, 342);
@@ -37,4 +37,3 @@ public class Main {
         }
     }
 }
-        
