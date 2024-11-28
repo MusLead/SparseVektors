@@ -298,7 +298,7 @@ public class SparseVector extends LinkedList {
                         if (this.isEnd()) {
                             this.insert(v.curr_data(), v.curr_index());
                         } else if (this.curr_index() == v.curr_index())
-                            this.updateCurrData(this.curr_data() +  v.curr_data());
+                            this.updateCurrData(this.curr_data() + v.curr_data());
                         else continue;
                     } else this.insert(v.curr_data(), v.curr_index());
                 } catch (Exception e) {
@@ -323,10 +323,6 @@ public class SparseVector extends LinkedList {
         }
         this.reset();
         return sb.toString();
-    }
-
-}
-ring();
     }
 
 }
