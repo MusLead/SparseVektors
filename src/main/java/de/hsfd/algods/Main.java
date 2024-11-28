@@ -7,7 +7,6 @@ public class Main {
         try {
             
             SparseVector v = new SparseVector();
-            SparseVector v1 = new SparseVector(10);
             
             v.setElement(700, 1);
             v.setElement(31, 223);
@@ -34,4 +33,8 @@ public class Main {
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
+            System.err.println(Arrays.toString(e.getStackTrace()));
+        }
+    }
+}
         

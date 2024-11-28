@@ -1,9 +1,58 @@
 package de.hsfd.algods;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CheckSparseVector {
+    @Test
+    void checkCountEqualsLength(){
+        SparseVector v = new SparseVector(7);
+        v.setElement(0,2);
+        v.setElement(1,2);
+        v.setElement(2,4);
+        v.setElement(3,3);
+        v.setElement(4,5);
+        v.setElement(5,10);
+        v.setElement(6,12);
+        try {
+            v.setElement(7, 20);
+            
+        } catch (RuntimeException e) {
+            System.err.print("Implementierung ist richtig: " + e.getMessage());
+            assertEquals("Vector is full", e.getMessage());
+        }
+    }
+
+    @Test
+    void removeThanZero(){
+        SparseVector v = new SparseVector();
+        v.setElement(0,2);
+        v.setElement(1,5);
+        v.setElement(2,4);
+
+        for(int i = 0; i < v.getLength() + 3 ; i++){
+            v.removeElement(i);
+            System.out.println("Removing in index: " + i);
+        } 
+    }
+
+    @Test
+    void constructorWithLimitN(){
+        SparseVector v1 = new SparseVector(2);
+        try {
+            v1.setElement(0, 20);
+            v1.setElement(1, 10);
+            v1.setElement(2, 10);
+            
+        } catch (RuntimeException e) {
+            System.err.print("Implementierung ist richtig:" + e.getMessage());
+        }
+        
+    }
+
 
     @Test
     void isEnd() {
