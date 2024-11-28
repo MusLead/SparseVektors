@@ -71,10 +71,10 @@ class LinkedList {
     }
 
     /**
-     * Check if the current pointer is at the end of the list <p>
+     * Check if the current pointer is at the end of the list. In other word, there is no elemnt left after the current pointer <p>
      * WARNING: This function does not represent the current element, instead
      * it represents the current pointer that lies before the current element
-     * @return true if the current pointer is at the end of the list
+     * @return true if the current pointer is at the end of the list. 
      */
     protected boolean isEnd() {
         // DO NOT CALL current() FUNCTION HERE!

@@ -7,8 +7,7 @@ public class Main {
         try {
             
             SparseVector v = new SparseVector();
-            SparseVector v1 = new SparseVector(10);
-            
+
             v.setElement(700, 1);
             v.setElement(31, 223);
             v.setElement(70, 342);

@@ -275,4 +275,19 @@ class CheckSparseVector {
         assertEquals(3.0, v1.getElement(1));
         assertEquals(8.0, v1.getElement(3));
     }
+
+    @Test
+    void checkAddifEndSameIndex() {
+        SparseVector v = new SparseVector();
+        v.setElement(0, 1);
+        v.setElement(1, 2);
+        v.setElement(9, 3);
+        SparseVector v2 = new SparseVector();
+        v2.setElement(0, 1);
+        v2.setElement(7, 2);
+        v2.setElement(9, 40);
+        v.add(v2);
+        System.out.println(v);
+        assertEquals(43.0, v.at(9));
+    }
 }
