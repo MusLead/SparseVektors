@@ -189,15 +189,18 @@ public class SparseVector extends LinkedList {
      * @param index the index of the element to insert
      */
     public void setElement(int index, double value) throws RuntimeException {
-        //TODO create test if the count == length, will it add element or throw exception!
         if(sizeMax != -1)
             if(count++ >= sizeMax) throw new RuntimeException("Vector is full");
         if (index < 0) throw new RuntimeException("Invalid position");
         reset();
         while (!isEnd() && curr_index() < index)
             advance();
-        //TODO: create if statement to check if the value is not 0, then add the element
-        this.insert(value, index);
+        if (value != 0){
+            this.insert(value, index);
+        }
+        else {
+            System.out.println("valeu is 0, it can't add the element");
+        }
     }
 
     /**
