@@ -317,4 +317,12 @@ public class SparseVector extends LinkedList {
     public String toString() {
         this.reset();
         StringBuilder sb = new StringBuilder();
-        while (!this.isEnd(
+        while (!this.isEnd()) {
+            sb.append("(v:").append(this.curr_data()).append(", i:").append(this.curr_index()).append("), ");
+            this.advance();
+        }
+        this.reset();
+        return sb.toString();
+    }
+
+}

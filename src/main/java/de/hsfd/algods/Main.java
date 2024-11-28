@@ -34,4 +34,7 @@ public class Main {
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
-        
+            System.err.println(Arrays.toString(e.getStackTrace()));
+        }
+    }
+}
