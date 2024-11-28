@@ -7,8 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 class CheckSparseVector {
+    
     @Test
-    void checkCountEqualsLength(){
+    void TestCountEqualsLength(){
         SparseVector v = new SparseVector(7);
         v.setElement(0,2);
         v.setElement(1,2);
@@ -21,13 +22,13 @@ class CheckSparseVector {
             v.setElement(7, 20);
             
         } catch (RuntimeException e) {
-            System.err.print("Implementierung ist richtig: " + e.getMessage());
+            System.err.print("Implementation is correct: " + e.getMessage());
             assertEquals("Vector is full", e.getMessage());
         }
     }
 
     @Test
-    void removeThanZero(){
+    void TestRemoveThanZero(){
         SparseVector v = new SparseVector();
         v.setElement(0,2);
         v.setElement(1,5);
@@ -39,25 +40,36 @@ class CheckSparseVector {
                 System.out.println("Removing in index: " + i);
             }
         } catch (RuntimeException e) {
-            System.out.print("Implementierung ist richtig: " + e.getMessage());
+            System.out.print("Implementation is correct: " + e.getMessage());
             assertEquals("Vector is empty", e.getMessage());
         } 
     }
 
     @Test
-    void constructorWithLimitN(){
-        SparseVector v1 = new SparseVector(2);
+    void testConstructorWithLimitN(){
+        SparseVector v = new SparseVector(2);
         try {
-            v1.setElement(0, 20);
-            v1.setElement(1, 10);
-            v1.setElement(2, 10);
+            v.setElement(0, 20);
+            v.setElement(1, 10);
+            v.setElement(2, 10);
         } catch (RuntimeException e) {
-            System.err.print("Implementierung ist richtig:" + e.getMessage());
+            System.err.print("Implementation is correct:" + e.getMessage());
+            assertEquals("Value of the Element is zero", e.getMessage());
             
         }
         
     }
-
+    @Test
+    void testAddElementWithValuaZero(){
+        SparseVector v = new SparseVector();
+        v.setElement(0,10);
+        try {
+            v.setElement(1, 0);
+        } catch (RuntimeException e) {
+            System.err.print("Implementation is correct:" + e.getMessage());
+            
+        }
+    }
 
     @Test
     void isEnd() {
