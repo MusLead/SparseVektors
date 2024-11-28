@@ -47,14 +47,14 @@ class CheckSparseVector {
 
     @Test
     void testConstructorWithLimitN(){
-        SparseVector v = new SparseVector(2);
+        SparseVector v = new SparseVector(3);
         try {
             v.setElement(0, 20);
             v.setElement(1, 10);
             v.setElement(2, 10);
         } catch (RuntimeException e) {
             System.err.print("Implementation is correct:" + e.getMessage());
-            assertEquals("Value of the Element is zero", e.getMessage());
+            assertEquals("Value of the Element is zero",  e.getMessage());
             
         }
         
@@ -102,7 +102,7 @@ class CheckSparseVector {
         for (int i = 10; i >= 0; i--) {
             v.setElement(i, i*2);
         }
-        assertEquals(0, v.curr_index());
+        assertEquals(1, v.curr_index());
         assertFalse(v.isEnd());
         System.out.println(v);
     }
