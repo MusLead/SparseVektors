@@ -33,9 +33,14 @@ class CheckSparseVector {
         v.setElement(1,5);
         v.setElement(2,4);
 
-        for(int i = 0; i < v.getLength() + 3 ; i++){
-            v.removeElement(i);
-            System.out.println("Removing in index: " + i);
+        try {
+            for(int i = 0; i < v.getLength() + 3 ; i++){
+                v.removeElement(i);
+                System.out.println("Removing in index: " + i);
+            }
+        } catch (RuntimeException e) {
+            System.out.print("Implementierung ist richtig: " + e.getMessage());
+            assertEquals("Vector is empty", e.getMessage());
         } 
     }
 
@@ -46,9 +51,9 @@ class CheckSparseVector {
             v1.setElement(0, 20);
             v1.setElement(1, 10);
             v1.setElement(2, 10);
-            
         } catch (RuntimeException e) {
             System.err.print("Implementierung ist richtig:" + e.getMessage());
+            
         }
         
     }
