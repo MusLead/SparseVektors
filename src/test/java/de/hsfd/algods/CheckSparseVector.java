@@ -62,7 +62,7 @@ class CheckSparseVector {
         
     }
     @Test
-    void testAddElementWithValuaZero(){
+    void testAddElementWithValueZero(){
         SparseVector v = new SparseVector();
         v.setElement(0,10);
         try {
@@ -221,6 +221,15 @@ class CheckSparseVector {
     }
 
     @Test
+    void removeAnElementTwoTimes() {
+        SparseVector v = new SparseVector();
+        v.setElement(0, 1);
+        v.setElement(1, 2);
+        v.removeElement(0);
+        assertThrows(RuntimeException.class, () -> v.removeElement(0));
+    }
+
+    @Test
     void getLength() {
         SparseVector v = new SparseVector();
         v.setElement(7, 1);
@@ -358,4 +367,32 @@ class CheckSparseVector {
         System.out.println(v);
         assertEquals(43.0, v.at(9));
     }
+
+    @Test
+    void testAddTwoEmptyVectors() {
+        SparseVector v1 = new SparseVector();
+        SparseVector v2 = new SparseVector();
+        v1.add(v2);
+        assertEquals(0, v1.getLength());
+    }
+
+    @Test
+    void setElementsAfterReset() {
+        SparseVector v = new SparseVector();
+        v.setElement(0, 1);
+        v.setElement(1, 2);
+        v.reset();
+        v.setElement(2, 3);
+        assertEquals(1, v.getElement(0));
+        assertEquals(2, v.getElement(1));
+        assertEquals(3, v.getElement(2));
+    }
+
+    @Test
+    void testHandleLargeVector() {
+        SparseVector v = new SparseVector();
+        v.setElement(1000000, 1);
+        assertEquals(1., v.getElement(1000000));
+    }
+
 }

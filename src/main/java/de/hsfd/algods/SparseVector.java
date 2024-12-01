@@ -48,15 +48,25 @@ class LinkedList {
      * The current_pointer.next will be updated to the new element
      * @param x the element to insert
      */
-    protected void insert(Double x, int index) {
-        Node newNode = new Node(x, index);
-        try {
-            newNode.setNext(this.current());
-        } catch (RuntimeException e) {
-            newNode.setNext(null);
-        }
-        current_pointer.setNext(newNode);
-    }
+//    protected void insert(Double x, int index) {
+//        Node newNode = new Node(x, index);
+//        try {
+//            newNode.setNext(this.current());
+//        } catch (RuntimeException e) {
+//            newNode.setNext(null);
+//        }
+//        current_pointer.setNext(newNode);
+//    }
+
+     protected void insert(Double x, int index) {
+         Node newNode = new Node(x, index);
+         if (isEnd()) {
+             newNode.setNext(null);
+         } else {
+             newNode.setNext(this.current());
+         }
+         current_pointer.setNext(newNode);
+     }
 
     /**
      * Get the current element (that is the element after the current pointer)
@@ -71,7 +81,7 @@ class LinkedList {
     }
 
     /**
-     * Check if the current pointer is at the end of the list. In other word, there is no elemnt left after the current pointer <p>
+     * Check if the current pointer is at the end of the list. In other word, there is no element left after the current pointer <p>
      * WARNING: This function does not represent the current element, instead
      * it represents the current pointer that lies before the current element
      * @return true if the current pointer is at the end of the list. 
@@ -97,6 +107,9 @@ class LinkedList {
      * @return the index of the current element
      */
     protected int curr_index(){
+        if (isEnd()) {
+            throw new RuntimeException("No current element");
+        }
         return current().getIndex();
     }
 
@@ -118,14 +131,25 @@ class LinkedList {
      * if the index is not found or the requested index is invalid, throw an exception
      * @param index the new index to update the current element
      */
+//    protected Double at(int index) {
+//        if(index < 0) throw new RuntimeException("Invalid index");
+//        reset();
+//        while (!isEnd() && curr_index() != index) {
+//            if (isEnd()) throw new RuntimeException("Index is not found");
+//            advance();
+//        }
+//        return curr_data();
+//    }
     protected Double at(int index) {
-        if(index < 0) throw new RuntimeException("Invalid index");
+        if (index < 0) throw new IndexOutOfBoundsException("Invalid index");
         reset();
-        while (!isEnd() && curr_index() != index) {
-            if (isEnd()) throw new RuntimeException("Index is not found");
+        while (!isEnd()) {
+            if (curr_index() == index) {
+                return curr_data();
+            }
             advance();
         }
-        return curr_data();
+        throw new IndexOutOfBoundsException("Index out of bounds");
     }
 
     /**
@@ -199,7 +223,7 @@ public class SparseVector extends LinkedList {
             this.insert(value, index);
         }
         else {
-            System.out.println("valeu is 0, it can't add the element");
+            System.out.println("value is 0, it can't add the element");
         }
     }
 
@@ -305,7 +329,7 @@ public class SparseVector extends LinkedList {
                         else continue;
                     } else this.insert(v.curr_data(), v.curr_index());
                 } catch (Exception e) {
-                    System.err.println(e.getMessage() + (this.isEnd() ? ", vektor: this" : ", vektor: v"));
+                    System.err.println(e.getMessage() + (this.isEnd() ? ", vector: this" : ", vector: v"));
                     System.err.println("current > this: " + (!this.isEnd() ? this.current() : "null") + ", v: " + (!v.isEnd() ? v.current() : "null"));
                     System.err.println("this: " + this + "\nv: " + v);
                     throw e;
