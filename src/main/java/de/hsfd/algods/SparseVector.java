@@ -329,7 +329,7 @@ public class SparseVector extends LinkedList {
                         else continue;
                     } else this.insert(v.curr_data(), v.curr_index());
                 } catch (Exception e) {
-                    System.err.println(e.getMessage() + (this.isEnd() ? ", vektor: this" : ", vektor: v"));
+                    System.err.println(e.getMessage() + (this.isEnd() ? ", vector: this" : ", vector: v"));
                     System.err.println("current > this: " + (!this.isEnd() ? this.current() : "null") + ", v: " + (!v.isEnd() ? v.current() : "null"));
                     System.err.println("this: " + this + "\nv: " + v);
                     throw e;
