@@ -48,23 +48,9 @@ class LinkedList {
      * The current_pointer.next will be updated to the new element
      * @param x the element to insert
      */
-//    protected void insert(Double x, int index) {
-//        Node newNode = new Node(x, index);
-//        try {
-//            newNode.setNext(this.current());
-//        } catch (RuntimeException e) {
-//            newNode.setNext(null);
-//        }
-//        current_pointer.setNext(newNode);
-//    }
-
      protected void insert(Double x, int index) {
          Node newNode = new Node(x, index);
-         if (isEnd()) {
-             newNode.setNext(null);
-         } else {
-             newNode.setNext(this.current());
-         }
+         newNode.setNext(isEnd() ? null : this.current());
          current_pointer.setNext(newNode);
      }
 
@@ -107,9 +93,7 @@ class LinkedList {
      * @return the index of the current element
      */
     protected int curr_index(){
-        if (isEnd()) {
-            throw new RuntimeException("No current element");
-        }
+        if (isEnd()) throw new RuntimeException("No current element");
         return current().getIndex();
     }
 
@@ -131,22 +115,12 @@ class LinkedList {
      * if the index is not found or the requested index is invalid, throw an exception
      * @param index the new index to update the current element
      */
-//    protected Double at(int index) {
-//        if(index < 0) throw new RuntimeException("Invalid index");
-//        reset();
-//        while (!isEnd() && curr_index() != index) {
-//            if (isEnd()) throw new RuntimeException("Index is not found");
-//            advance();
-//        }
-//        return curr_data();
-//    }
     protected Double at(int index) {
         if (index < 0) throw new IndexOutOfBoundsException("Invalid index");
         reset();
         while (!isEnd()) {
-            if (curr_index() == index) {
+            if (curr_index() == index) 
                 return curr_data();
-            }
             advance();
         }
         throw new IndexOutOfBoundsException("Index out of bounds");
@@ -172,9 +146,8 @@ class LinkedList {
     protected void delete(int pos) {
         if (pos < 0) throw new RuntimeException("Invalid position");
         reset();
-        while(!isEnd() && curr_index() != pos){
+        while(!isEnd() && curr_index() != pos)
             advance();
-        }
         if(isEnd()) throw new RuntimeException("No elements to be removed");
         delete();
     }
@@ -219,12 +192,9 @@ public class SparseVector extends LinkedList {
         reset();
         while (!isEnd() && curr_index() < index)
             advance();
-        if (value != 0){
-            this.insert(value, index);
-        }
-        else {
-            System.out.println("value is 0, it can't add the element");
-        }
+        if (value != 0) this.insert(value, index);
+        else System.out.println("Value is 0, it can't be added to the vector. Pass a non-zero value!");
+        
     }
 
     /**
@@ -278,9 +248,8 @@ public class SparseVector extends LinkedList {
      */
     public boolean equals(SparseVector v) {
         // check if the two vectors are equal
-        if (this.getLength() != v.getLength()) {
+        if (this.getLength() != v.getLength()) 
             return false;
-        }
         this.reset();
         v.reset();
         while (!this.isEnd()) {
@@ -322,9 +291,9 @@ public class SparseVector extends LinkedList {
                     if (this.curr_index() <= v.curr_index()) {
                         if (this.curr_index() < v.curr_index())
                             advance();
-                        if (this.isEnd()) {
+                        if (this.isEnd()) 
                             this.insert(v.curr_data(), v.curr_index());
-                        } else if (this.curr_index() == v.curr_index())
+                        else if (this.curr_index() == v.curr_index())
                             this.updateCurrData(this.curr_data() + v.curr_data());
                         else continue;
                     } else this.insert(v.curr_data(), v.curr_index());

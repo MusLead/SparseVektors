@@ -8,7 +8,12 @@ import org.junit.jupiter.api.Test;
 
 class CheckSparseVector {
 
-
+    @Test
+    void atIndexOutOfBoud(){
+        SparseVector v = new SparseVector();
+        for(int i = 0; i< 10; i++) v.setElement(i, i*2 + 15);
+        assertThrows(IndexOutOfBoundsException.class, () -> v.at(12));
+    }
 
     @Test
     void TestCountEqualsLength(){
