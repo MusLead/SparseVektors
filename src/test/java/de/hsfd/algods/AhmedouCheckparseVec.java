@@ -8,15 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class AhmedouCheckparseVec {
 
-    @Test
-    void testRemoveNonExistentElement() {
-        SparseVector v = new SparseVector();
-        v.setElement(1, 10);
-        v.setElement(3, 20);
 
-        // Versuche, ein nicht vorhandenes Element zu entfernen
-        assertThrows(RuntimeException.class, () -> v.removeElement(5), "Expected exception for non-existent element");
-    }
 
     @Test
     void testAddIdenticalVectors() {
@@ -105,11 +97,7 @@ class AhmedouCheckparseVec {
         SparseVector v = new SparseVector();
         assertThrows(RuntimeException.class, () -> v.setElement(5, null), "Null values should not be allowed");
     }
-    @Test
-    void testSetElementNullValue() {
-        SparseVector v = new SparseVector();
-        assertThrows(RuntimeException.class, () -> v.setElement(1, null), "Null values should throw an exception");
-    }
+
 
     @Test
     void testRemoveNonExistentElement() {
