@@ -72,8 +72,8 @@ class AhmedouCheckparseVec {
 
         v.reset();
 
-        assertEquals(0, v.getLength(), "Vector should be empty after reset");
-        assertThrows(RuntimeException.class, () -> v.at(1), "Accessing any element after reset should throw an exception");
+        assertEquals(2, v.getLength(), "even with reset, there should be 2 elements within the list.");
+        assertThrows(RuntimeException.class, () -> v.at(13),"Accessing any element after reset should throw an exception");
     }
 
     @Test

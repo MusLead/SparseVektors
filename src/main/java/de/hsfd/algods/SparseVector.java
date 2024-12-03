@@ -87,7 +87,7 @@ class LinkedList {
      */
     protected void reset() {
 
-        begin.setNext(null);
+
         current_pointer = begin; // Zeiger zurücksetzen
 
     }
