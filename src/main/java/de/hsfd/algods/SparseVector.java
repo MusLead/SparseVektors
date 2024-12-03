@@ -82,8 +82,6 @@ class LinkedList {
      * Reset the current pointer to the beginning of the list
      */
     protected void reset() {
-
-
         current_pointer = begin; // Zeiger zurücksetzen
 
     }
