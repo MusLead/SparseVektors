@@ -82,7 +82,10 @@ class LinkedList {
      * Reset the current pointer to the beginning of the list
      */
     protected void reset() {
-        current_pointer = begin;
+
+
+        current_pointer = begin; // Zeiger zurücksetzen
+
     }
 
     /**
@@ -279,6 +282,7 @@ public class SparseVector extends LinkedList {
      * If the index of the two vectors are not equal, the data of the vector v will be inserted into this vector
      * @param v the other vector to add to this vector
      */
+
     public void add(SparseVector v) {
         // add the two vectors
         this.reset();
