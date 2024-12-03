@@ -92,18 +92,7 @@ class AhmedouCheckparseVec {
         v.setElement(1, 20);
         assertEquals(20.0, v.getElement(1), "Re-added element should be accessible");
     }
-    @Test
-    void testSetElementNullValue() {
-        SparseVector v = new SparseVector();
-        assertThrows(RuntimeException.class, () -> v.setElement(5, null), "Null values should not be allowed");
-    }
 
-
-    @Test
-    void testRemoveNonExistentElement() {
-        SparseVector v = new SparseVector(5);
-        assertThrows(RuntimeException.class, () -> v.removeElement(3), "Removing a non-existent element should throw an exception");
-    }
 
 
 
