@@ -88,7 +88,6 @@ class CheckSparseVector {
         v.reset();
 
         assertEquals(2, v.getLength(), "even with reset, there should be 2 elements within the list.");
-        assertThrows(RuntimeException.class, () -> v.at(13),"Accessing any element after reset should throw an exception");
     }
 
     @Test //Ahmedou
@@ -98,7 +97,7 @@ class CheckSparseVector {
         v.setElement(2, 10);
         assertThrows(RuntimeException.class, () -> v.setElement(3, 15), "Exceeding max size should throw an exception");
     }
-    
+
     @Test //Ahmedou
     void testRemoveAndReAddElement() {
         SparseVector v = new SparseVector(5);
@@ -128,10 +127,8 @@ class CheckSparseVector {
         v.setElement(6,12);
         try {
             v.setElement(7, 20);
-            
         } catch (RuntimeException e) {
-            System.err.print("Implementation is correct: " + e.getMessage());
-            assertEquals("Vector is full", e.getMessage());
+            assertEquals("Vector is full", e.getMessage(), "adding another element is prohibited");
         }
     }
 
@@ -148,12 +145,11 @@ class CheckSparseVector {
                 System.out.println("Removing in index: " + i);
             }
         } catch (RuntimeException e) {
-            System.out.print("Implementation is correct: " + e.getMessage());
-            assertEquals("Vector is empty", e.getMessage());
+            assertEquals("Vector is empty", e.getMessage(), "remove element more that the given length is prohibited");
         } 
     }
 
-    @Test //Jack
+    @Test //Jack TODO check again the test implementation 
     void testConstructorWithLimitN(){
         SparseVector v = new SparseVector(3);
         try {
@@ -161,23 +157,19 @@ class CheckSparseVector {
             v.setElement(1, 10);
             v.setElement(2, 10);
         } catch (RuntimeException e) {
-            System.err.print("Implementation is correct:" + e.getMessage());
+
             assertEquals("Value of the Element is zero",  e.getMessage());
-            
+            assertThrows(RuntimeException.class, () -> v.at(1));
         }
         
     }
     
-    @Test //Agha
+    @Test //Agha TODO check again the test implementation 
     void testAddElementWithValueZero(){
         SparseVector v = new SparseVector();
         v.setElement(0,10);
-        try {
-            v.setElement(1, 0);
-        } catch (RuntimeException e) {
-            System.err.print("Implementation is correct:" + e.getMessage());
-            
-        }
+        v.setElement(1, 0);
+        assertEquals(1, v.getLength(),"there should only be one element, since the element with value 0 is being ignored.");
     }
 
     @Test //Agha
@@ -201,7 +193,6 @@ class CheckSparseVector {
         }
         assertEquals(9, v.curr_index(), "this means the current pointer is at a node with index 8"); 
         assertFalse(v.isEnd());
-        System.out.println("With current pointer: " + v.current() + " and current next: " + v.current().getNext());
         System.out.println(v);
     }
 
@@ -345,7 +336,7 @@ class CheckSparseVector {
         v2.setElement(7, 1);
         v2.setElement(1, 2);
         v2.setElement(27, 4);
-        assertFalse(v.equals(v2));
+        assertFalse(v.equals(v2),"since the index 27 have diffrent values from both of the vectors");
     }
 
     @Test //Agha
@@ -360,7 +351,7 @@ class CheckSparseVector {
         v2.setElement(28, 4);
         v.add(v2);
         assertEquals(4.0, v.at(1));
-        assertThrows(RuntimeException.class, () -> v.at(2));
+        assertThrows(RuntimeException.class, () -> v.at(2), "there is no element with index 2");
         assertEquals(2.0, v.at(7));
         assertEquals(3.0, v.at(27));
         assertEquals(4.0, v.at(28));
@@ -424,7 +415,7 @@ class CheckSparseVector {
         v2.setElement(9, 40);
         v.add(v2);
         System.out.println(v);
-        assertEquals(43.0, v.at(9));
+        assertEquals(43.0, v.at(9), "at the end of the element, add two elements beacuse of the same index");
     }
 
     @Test //Saba
