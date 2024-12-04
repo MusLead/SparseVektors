@@ -149,22 +149,16 @@ class CheckSparseVector {
         } 
     }
 
-    @Test //Jack TODO check again the test implementation 
+    @Test //Jack
     void testConstructorWithLimitN(){
         SparseVector v = new SparseVector(3);
-        try {
-            v.setElement(0, 20);
-            v.setElement(1, 10);
-            v.setElement(2, 10);
-        } catch (RuntimeException e) {
-
-            assertEquals("Value of the Element is zero",  e.getMessage());
-            assertThrows(RuntimeException.class, () -> v.at(1));
-        }
-        
+        v.setElement(0, 20);
+        v.setElement(1, 10);
+        v.setElement(2, 10);
+        assertThrows(RuntimeException.class, () -> v.setElement(3, 10));
     }
     
-    @Test //Agha TODO check again the test implementation 
+    @Test //Agha
     void testAddElementWithValueZero(){
         SparseVector v = new SparseVector();
         v.setElement(0,10);
