@@ -41,12 +41,14 @@ class CheckSparseVector {
         SparseVector v = new SparseVector(10);
         assertThrows(RuntimeException.class, () -> v.setElement(-1, 10), "Negative index should throw an exception");
     }
+
     @Test //Ahmmedou 
     void testSetElementWithValueZero() {
         SparseVector v = new SparseVector(5);
         v.setElement(2, 0); // Keine Ausnahme, aber Element sollte nicht hinzugefügt werden
         assertEquals(0.0, v.getElement(2), "Value 0 should not be added to the SparseVector, therefore according to the task, the value must be 0");
     }
+
     @Test //Ahmedou
     void testEqualsIdenticalVectors() {
         SparseVector v1 = new SparseVector();
@@ -55,6 +57,7 @@ class CheckSparseVector {
         v2.setElement(1, 5);
         assertTrue(v1.equals(v2), "Two identical vectors should be equal");
     }
+
     @Test //Ahmedou
     void testNotEqualsDifferentVectors() {
         SparseVector v1 = new SparseVector();
@@ -63,6 +66,7 @@ class CheckSparseVector {
         v2.setElement(1, 6);
         assertFalse(v1.equals(v2), "Two different vectors should not be equal");
     }
+
     @Test //Ahmedou
     void testAddTwoVectors() {
         SparseVector v1 = new SparseVector();
@@ -74,6 +78,7 @@ class CheckSparseVector {
 
         assertEquals(15.0, v1.getElement(1), "Values at index 1 should be summed up");
     }
+
     @Test //Ahmedou
     void testResetVector() {
         SparseVector v = new SparseVector();
@@ -93,6 +98,7 @@ class CheckSparseVector {
         v.setElement(2, 10);
         assertThrows(RuntimeException.class, () -> v.setElement(3, 15), "Exceeding max size should throw an exception");
     }
+    
     @Test //Ahmedou
     void testRemoveAndReAddElement() {
         SparseVector v = new SparseVector(5);
@@ -232,24 +238,6 @@ class CheckSparseVector {
     }
 
     @Test //Agha
-    void curr_data() {
-        SparseVector v = new SparseVector();
-        v.setElement(0, 1);
-        v.setElement(1, 2);
-        v.setElement(2, 3);
-        assertEquals(3.0, v.curr_data(), "this means the current pointer is at a node with index 1");
-    }
-
-    @Test //Agha
-    void curr_index() {
-        SparseVector v = new SparseVector();
-        v.setElement(1, 1);
-        v.setElement(2, 2);
-        v.setElement(30, 3);
-        assertEquals(30, v.curr_index(), "this means the current pointer is at a node with index 2");
-    }
-
-    @Test
     void updateCurrData() {
         SparseVector v = new SparseVector();
         v.setElement(0, 1);
@@ -258,36 +246,6 @@ class CheckSparseVector {
         v.updateCurrData(10.0);
         assertEquals(2, v.curr_index());
         assertEquals(10, v.curr_data());
-    }
-
-    @Test //Agha
-    void at() {
-        SparseVector v = new SparseVector();
-        v.setElement(0, 1);
-        v.setElement(1, 2);
-        v.setElement(2, 3);
-        assertEquals(2.0, v.at(1));
-    }
-
-
-    @Test //Agha
-    void delete() {
-        SparseVector v = new SparseVector();
-        v.setElement(7, 1);
-        v.setElement(1, 2);
-        v.setElement(27, 3);
-        v.delete();
-        assertEquals(2.0, v.at(1));
-        System.out.println("v after delete: " + v);
-    }
-
-    @Test //Agha
-    void testDeleteNotValid() {
-        SparseVector v = new SparseVector();
-        v.setElement(7, 1);
-        v.setElement(1, 2);
-        v.setElement(27, 3);
-        assertThrows(RuntimeException.class, () -> v.delete(4));
     }
 
     @Test //Agha

@@ -34,8 +34,8 @@ class Node {
 
 class LinkedList {
 
-    public final Node begin;
-    public Node current_pointer;
+    private final Node begin;
+    private Node current_pointer;
 
     LinkedList() {
         this.begin = this.current_pointer = new Node(null, -1);
@@ -157,7 +157,7 @@ class LinkedList {
      * Delete the element at the current position.
      * If the current position is the end of the list, throw an exception
      */
-    protected void delete() {
+    private void delete() {
         if (isEnd()) throw new RuntimeException("No element to delete");
         current_pointer.setNext(current().getNext());
     }
