@@ -254,7 +254,7 @@ public class SparseVector extends LinkedList {
         this.reset();
         v.reset();
         while (!this.isEnd()) {
-            if (!this.curr_data().equals(v.curr_data()) | 
+            if (this.curr_data() != v.curr_data() | 
                 this.curr_index() != v.curr_index()) 
                 return false;
             this.advance();
