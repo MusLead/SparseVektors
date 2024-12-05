@@ -27,7 +27,7 @@ public class Main {
             System.out.println("Vector v: " + v);
 
             v.removeElement(4);
-
+            System.out.println(v.equals(v2));
             System.out.println("Vector v: " + v);
             System.out.println("element at index 7: " + v.getElement(7));
 
