@@ -88,3 +88,17 @@ The `SparseVector` class implements the following functionalities:
 ---
 
 For questions or clarifications, feel free to reach out to **MusLead**. Happy coding! 🚀
+
+---
+
+
+## Evaluation Testat 1 WS24/25
+> Timo Geier "Ich hatte an ein paar Stellen euch Punkte abziehen müssen, 
+> weil ihr die nicht erklären oder erst nach ein paar Tipps erklären konntet (bspw. Additionsfälle von SparseVektoren). 
+> Auch hatten in eurer Implementierung Punkte gefehlt (Addition zweier Werte in Vektor ergibt 0 und Knoten wird entfernt hatte gefehlt), die wir gewertet haben, wo aber auf Nachfrage ihr das noch erklären konntet. 
+> Auch manche Tests, die wir sehen wollten, waren nicht vollständig implementiert wie wir das gerne haben wollten."
+
+1. We could not give an explantion correctly
+2. Missing implementation (Addition of two elements that gives value 0)
+3. Cannot explain or shows a meaningful test (too much tests that could not be controlled by especially Agha)
+
